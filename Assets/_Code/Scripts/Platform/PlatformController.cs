@@ -9,6 +9,7 @@ public class PlatformController : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         screenWidth = Screen.currentResolution.width;
     }
 

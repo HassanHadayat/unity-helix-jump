@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Scenes/Development/Main.unity
-    guid: 0c3d08bc4e5a0754bb7fa6b389f29266
+    path: Assets/_Scenes/Development/Cinemachine.unity
+    guid: 0f7631553dcb4b94eb6459c505763458
   m_configObjects: {}
