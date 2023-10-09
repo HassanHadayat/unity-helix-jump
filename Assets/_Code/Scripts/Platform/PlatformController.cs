@@ -5,32 +5,30 @@ public class PlatformController : MonoBehaviour
     [SerializeField] private Transform platformTrans;
     [SerializeField] private float rotateSpeed;
     Touch currTouch;
+    private float screenWidth;
+
+    private void Start()
+    {
+        screenWidth = Screen.currentResolution.width;
+    }
+
 
     void Update()
     {
 
-        //if (!isReachedFinalDest)
-        //{
-        //    transform.position += transform.forward * forwardSpeed * Time.deltaTime;
-        //}
-
-        // Horizontal Movement
         if (Input.touchCount > 0)
         {
             currTouch = Input.GetTouch(0);
 
             if (currTouch.phase == TouchPhase.Moved)
             {
-                // Player Body Movement across Horizontal Axis
+                // Delta Angle
+                float deltaAngle = currTouch.deltaPosition.x * (360 / screenWidth); // deltaX * anglePerResolution
 
-                float newY = currTouch.deltaPosition.x * rotateSpeed * Time.deltaTime;
-                //Vector3 newRot = 
-                Quaternion newRot = platformTrans.localRotation;
-                newRot.y -= newY;
-                platformTrans.localRotation = newRot;
-                //platformTrans.localPosition = newPos;
+                platformTrans.Rotate(Vector3.up, -deltaAngle);
             }
 
         }
+
     }
 }
