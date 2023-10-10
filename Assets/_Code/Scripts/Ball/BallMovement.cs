@@ -1,29 +1,21 @@
 using UnityEngine;
-
-public class BallMovement : MonoBehaviour
+public interface IBallMovement
 {
-    [SerializeField] private Rigidbody m_rb;
-    [SerializeField] private GameObject splash;
-    public float force;
+    public void HitStep(TrailRenderer trail, GameObject step);
+}
 
-    private void Update()
+public class NormalMovement : IBallMovement
+{
+    public void HitStep(TrailRenderer trail, GameObject step)
     {
     }
-    private void OnCollisionEnter(Collision collision)
+}
+
+
+public class FireMovement : IBallMovement
+{
+    public void HitStep(TrailRenderer trail, GameObject step)
     {
-        if (collision.collider.CompareTag("Step"))
-        {
-            Debug.Log("Collided!");
 
-            // Instantiate Bounce Splash
-            GameObject splashGO = Instantiate(splash, collision.collider.transform);
-            splashGO.transform.position = collision.contacts[0].point + (Vector3.up * 0.001f);
-            float randRot = Random.Range(0f, 180f);
-            splashGO.transform.Rotate(Vector3.forward, randRot);
-
-            // Bounce
-            m_rb.velocity = Vector3.zero;
-            m_rb.velocity = Vector3.up * force;
-        }
     }
 }

@@ -16,6 +16,7 @@ public class PlatformController : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0) return;
 
         if (Input.touchCount > 0)
         {
