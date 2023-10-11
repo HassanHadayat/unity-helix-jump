@@ -37,7 +37,7 @@ public class Ball : MonoBehaviour
 
             // Instantiate Bounce Splash
             GameObject splashGO = Instantiate(splash, collision.collider.transform);
-            splashGO.transform.position = collision.contacts[0].point + (Vector3.up * 0.002f);
+            splashGO.transform.position = collision.contacts[0].point + (Vector3.up * 0.03f);
             float randRot = Random.Range(0f, 180f);
             splashGO.transform.Rotate(Vector3.forward, randRot);
 
